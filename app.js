@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/base');
 var app = express();
 
-// view engine setup http://www.jdon.com/idea/nodejs/web-app-with-angularjs-and-rest-api-with-node.html
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('.html', require('ejs').__express);

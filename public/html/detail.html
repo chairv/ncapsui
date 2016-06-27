@@ -58,44 +58,15 @@
             <div class="bk-docs-scroll-hidden">
                 <div class="bk-bg-white bk-padding-20">
                     <div class="media">
-                        <!--<a class="pull-left bk-avatar" href="page-activity.html#">-->
-                        <!--<img src="assets/img/avatar7.jpg" alt="" class="img-circle bk-img-40 bk-border-info bk-border-1x" />-->
-                        <!--</a>-->
                         <div class="media-body">
                             <!--<div class="pull-right small">30 minutes ago</div>-->
                             <!--<div class="media-heading bk-fg-primary">-->
                             <!--<strong>Sharon Rose</strong>-->
                             <!--</div>    temp.example-->
+                                   <p ng-repeat="(key,value) in temp.example">
+                                       {{key}} ' : ' {{value}} <br>
+                                   </p>
 
-                            <p>
-                                "touser":<input type="text">,<br>
-                                "template_id":{{temp.example.template_id}},<br>
-                                "url":<input type="text">,<br>
-                                "data":{<br>
-                                "first": {<br>
-                                "value":"恭喜你购买成功！",<br>
-                                "color":"#173177"<br>
-                                },<br>
-                                "keynote1":{
-                                "value":"巧克力",
-                                "color":"#173177"
-                                },
-                                "keynote2": {
-                                "value":"39.8元",
-                                "color":"#173177"
-                                },
-                                "keynote3": {
-                                "value":"2014年9月22日",
-                                "color":"#173177"
-                                },
-                                <br>
-                                "remark":{<br>
-                                "value":"欢迎再次购买！",<br>
-                                "color":"#173177"<br>
-                                }<br>
-                                }
-                            </p>
-                            <!--{{temp.example}}-->
                         </div>
                     </div>
                 </div>
