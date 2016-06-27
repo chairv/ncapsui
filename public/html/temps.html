@@ -1,0 +1,38 @@
+<!-- Main Page -->
+<!--<div class="main sidebar-minified">-->
+<!-- End Page Header -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default bk-bg-white">
+            <div class="panel-heading bk-bg-white">
+                <h6><i class="fa fa-table"></i><span class="break"></span>
+                  <a ui-sref="temps">消息模板</a>
+                </h6>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                        <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>内容</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="temp in temps">
+                            <td>{{temp.title}}</td>
+                            <td>{{temp.content}}</td>
+                            <td>
+                                <a class="btn btn-success" ui-sref="detail({{temp}})">
+                                    <i class="fa fa-search-plus "></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
