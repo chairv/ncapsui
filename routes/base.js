@@ -17,4 +17,13 @@ router.get('/templist', function (req, res, next) {
     // res.render('temps', {temps: {"li": "ds"}});
 });
 
+router.get('/getTemp',function (req, res, next) {
+    dao.temp.findById(req.query.id,function (err, doc) {
+        if(err){
+           return next(err);
+        }
+        res.json(doc);
+    });
+});
+
 module.exports = router;

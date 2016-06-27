@@ -10,13 +10,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: 'html/temps.html',
         controller: 'TempListController'
     }).state('detail', {
-        url: "/detail",
-        params: {
-            _id: null,
-            title: null,
-            content: null,
-            example: null
-        },
+        url: "/detail/:id",
         templateUrl: "html/detail.html",
         controller: 'TempDetailController'
     });
@@ -31,7 +25,11 @@ app.controller('TempListController', function ($scope, $http) {
 app.controller('layoutController', function () {
 
 });
-app.controller('TempDetailController', function ($scope, $stateParams) {
-    console.info($stateParams);
+
+app.controller('TempDetailController', function ($scope, $http, $stateParams) {
+    $http.get('getTemp?id=' + $stateParams.id).success(function (response) {
+        console.info(response);
+        $scope.temp = response;
+    });
 });
 

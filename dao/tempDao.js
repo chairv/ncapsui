@@ -12,13 +12,12 @@ db.once('open', function () {
 
 var Schema = mongoose.Schema;
 var tempSchema = new Schema({
-    _id:{type:Object},
     template_id: {type: String},
     title: {type: String},
     primary_industry: {type: String},
     deputy_industry: {type: String},
     content: {type: String},
-    example: {type: String}
+    example: {type: Object}
 },{collection:'temp'});
 
 exports.temp = mongoose.model('temp', tempSchema);
