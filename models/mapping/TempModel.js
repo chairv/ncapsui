@@ -8,6 +8,7 @@ var schema = new Schema({
     primary_industry: {type: String},
     deputy_industry: {type: String},
     content: {type: String},
-    example: {type: Object}
+    example: {type: Object},
+    createDate: { type: Date, default: Date.now }
 }, {collection: 'temp'});
 mongoose.model('Temp', schema);

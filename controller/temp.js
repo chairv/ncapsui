@@ -3,8 +3,9 @@
  */
 var dao = require('../dao/TempDao');
 var udao = require('../dao/UtempDao');
-var UTemp = require('./../models').UTemp;
-var https  = require('https');
+var UtModel = require('./../models').UTemp;
+var TempModel = require('./../models').Temp;
+var https = require('https');
 
 exports.list = function (req, res, next) {
     dao.Temp.getAll(function (err, docs) {
@@ -29,9 +30,27 @@ exports.loadTemp = function (req, res, next) {
     var tempId = req.query.tempId;
     var matchTemp = {};
     https.get('https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=' + token, function (response) {
-       console.info(response.statusCode);
-       console.info(response.headers);
-       console.info(response.content);
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            var jsonData = JSON.parse(body);
+            if (jsonData['template_list']) {
+                jsonData['template_list'].forEach(function (doc) {
+                    var ut = new UtModel(doc);
+                    ut.access_token = token;
+                    dao.Temp.getByQuery({'content': doc.content, "title": doc.title}, null, null,
+                        function (err, model) {
+                            // dao.Temp.create(doc,function (TempModel) {
+                            //    console.info(TempModel);
+                            // })
+                            console.info('no model');
+                        });
+                    udao.UTemp.create(ut, null);
+                });
+            }
+        });
     });
     res.json(matchTemp);
 }
