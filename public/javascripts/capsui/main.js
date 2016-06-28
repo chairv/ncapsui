@@ -26,9 +26,9 @@ app.filter('orderByTemp', function () {
     return function (x) {
         var temp = {};
         if (typeof x == 'object') {
-            temp.touser = x.touser;
-            temp.template_id = x.template_id;
-            temp.url = x.url;
+            temp.touser = '你的openid';
+            temp.template_id = '{{template_id}}';
+            temp.url = 'http://www.ittun.com';
             temp.data = x.data;
         }
         return temp;
@@ -49,5 +49,12 @@ app.controller('TempDetailController', function ($scope, $http, $stateParams) {
     $http.get('getTemp?id=' + $stateParams.id).success(function (response) {
         $scope.temp = response;
     });
+
+    $scope.access_token = '';
+    $scope.loadTemp = function () {
+        $http.get('loadTemp?access_token=' + $scope.access_token + '&tempId=' + $scope.temp._id).success(function (response) {
+             console.info(response);
+        });
+    }
 });
 

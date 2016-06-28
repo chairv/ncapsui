@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-xs-4">
                     <div class="bk-avatar">
-                        <img src="assets/img/avatar.jpg" alt="" class="img-circle bk-img-60 bk-border-info bk-border-3x"
+                        <img src="images/guangong.png" alt="" class="img-circle bk-img-60 bk-border-info bk-border-3x"
                              ui-sref="temps"/>
                     </div>
                     <!--</div>-->
@@ -32,9 +32,9 @@
                     <!--<img class="img-responsive bk-radius" src="assets/img/gallery/photo3.jpg" alt="" />-->
                     <!--</div>-->
                     <p> <h4 class="bk-margin-off bk-fg-primary">{{temp.title}}</h4></p>
-                    <blockquote><pre>
-                        {{temp.content}}
-                    </pre></blockquote>
+                    <blockquote>
+                        <pre> {{temp.content}} </pre>
+                    </blockquote>
                 </div>
             </a>
             <br/>
@@ -42,10 +42,10 @@
                 <div class="actions">
                     <div class="btn-group">
                         <button type="button" class="btn btn-link">
-                            <small>Like</small>
+                            <small>post参数</small>
                         </button>
                         <button type="button" class="btn btn-link">
-                            <small>Comment</small>
+                            <small>格式说明</small>
                         </button>
                         <button type="button" class="btn btn-link">
                             <small>Share</small>
@@ -63,10 +63,7 @@
                             <div class="media-heading bk-fg-primary">
                                 <!--<strong>Sharon Rose</strong>-->
                                 <!--</div>    temp.example-->
-                                <textarea rows="10" style=" width: 100%;height: 650px" id="example">
-                                 {{temp.example |orderByTemp |formatJson}}
-                                </textarea>
-
+                                <textarea rows="10" style=" width: 100%;height: 650px">{{temp.example |orderByTemp |formatJson}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -74,15 +71,23 @@
 
 
                 <div class="bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-                    <form role="form" action="javascript:">
+                    <form role="form" action="javascript:" ng-submit="loadTemp">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="填写access_token,加载配置"/>
+                            <input type="text" class="form-control" placeholder="填写access_token,加载配置" ng-model="access_token"/>
 												  <span class="input-group-btn">
 													<button class="btn btn-default" type="button"><i
                                                             class="fa fa-send-o"></i></button>
 					   </span>
                         </div>
                     </form>
+                    <br>
+                    <hr>
+                       <pre>
+                         温馨提示: 根据token去匹配配置的消息模板,openid是你关注测试号时的微信号
+                          access_token根据appid与 appsecret在浏览器里获取
+                          https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
+                        </pre>
+                       <img src="images/token.png" style="width: 100%;">
                 </div>
             </div>
         </div>
