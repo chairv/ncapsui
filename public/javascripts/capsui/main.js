@@ -16,6 +16,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     });
 });
 
+app.filter('formatJson', function () {
+    return function (x) {
+        console.info(x);
+        return JsonUti.convertToString(x);
+    }
+});
+
 app.controller('TempListController', function ($scope, $http) {
     $http.get('templist').success(function (response) {
         $scope.temps = response;
@@ -28,7 +35,8 @@ app.controller('layoutController', function () {
 
 app.controller('TempDetailController', function ($scope, $http, $stateParams) {
     $http.get('getTemp?id=' + $stateParams.id).success(function (response) {
-        $scope.temp = angular.fromJson(response);
+        console.info(response);
+        $scope.temp = response;
     });
 });
 

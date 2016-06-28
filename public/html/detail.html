@@ -60,35 +60,39 @@
                     <div class="media">
                         <div class="media-body">
                             <!--<div class="pull-right small">30 minutes ago</div>-->
-                            <!--<div class="media-heading bk-fg-primary">-->
-                            <!--<strong>Sharon Rose</strong>-->
-                            <!--</div>    temp.example-->
-                                   <p ng-repeat="(key,value) in temp.example">
-                                       {{key}} ' : ' {{value}} <br>
-                                   </p>
+                            <div class="media-heading bk-fg-primary">
+                                <!--<strong>Sharon Rose</strong>-->
+                                <!--</div>    temp.example-->
+                                <textarea rows="10" style=" width: 100%;height: 650px" id="example">
+                                 {{temp.example |formatJson}}
+                                </textarea>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-                <form role="form" action="javascript:">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="填写access_token,加载配置"/>
+
+
+                <div class="bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
+                    <form role="form" action="javascript:">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="填写access_token,加载配置"/>
 												  <span class="input-group-btn">
 													<button class="btn btn-default" type="button"><i
                                                             class="fa fa-send-o"></i></button>
 					   </span>
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="panel bk-widget bk-border-off">
-        <div class="panel-body bk-ltr">
-            <div class="row text-center">
-                <button type="button" class="btn btn-info btn-lg btn-block">发送</button>
+        <div class="panel bk-widget bk-border-off">
+            <div class="panel-body bk-ltr">
+                <div class="row text-center">
+                    <button type="button" class="btn btn-info btn-lg btn-block">发送</button>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script href="../JsonUtil.js" type="application/javascript"></script>
