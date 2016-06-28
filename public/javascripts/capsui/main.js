@@ -18,8 +18,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 app.filter('formatJson', function () {
     return function (x) {
-        console.info(x);
         return JsonUti.convertToString(x);
+    }
+});
+
+app.filter('orderByTemp', function () {
+    return function (x) {
+        var temp = {};
+        if (typeof x == 'object') {
+            temp.touser = x.touser;
+            temp.template_id = x.template_id;
+            temp.url = x.url;
+            temp.data = x.data;
+        }
+        return temp;
     }
 });
 
@@ -35,7 +47,6 @@ app.controller('layoutController', function () {
 
 app.controller('TempDetailController', function ($scope, $http, $stateParams) {
     $http.get('getTemp?id=' + $stateParams.id).success(function (response) {
-        console.info(response);
         $scope.temp = response;
     });
 });
