@@ -8,4 +8,5 @@ router.get('/', function (req, res, next) {
 });
 router.get('/templist', temp.list);
 router.get('/getTemp', temp.getById);
+router.get('/loadTemp', temp.loadTemp);
 module.exports = router;

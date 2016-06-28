@@ -4,10 +4,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var schema = new Schema({
+    openid:{type:String},
+    template_id: {type: String},
     title: {type: String},
-    primary_industry: {type: String},
-    deputy_industry: {type: String},
     content: {type: String},
     example: {type: Object}
-}, {collection: 'temp'});
-mongoose.model('Temp', schema);
+}, {collection: 'u_temp'});
+mongoose.model('UTemp', schema);

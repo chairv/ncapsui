@@ -71,13 +71,12 @@
 
 
                 <div class="bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
-                    <form role="form" action="javascript:" ng-submit="loadTemp">
+                    <form role="form" ng-submit="loadTemp()">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="填写access_token,加载配置" ng-model="access_token"/>
-												  <span class="input-group-btn">
-													<button class="btn btn-default" type="button"><i
-                                                            class="fa fa-send-o"></i></button>
-					   </span>
+						    <span class="input-group-btn">
+								 <button class="btn btn-default" type="submit"><i class="fa fa-send-o"></i></button>
+					        </span>
                         </div>
                     </form>
                     <br>
