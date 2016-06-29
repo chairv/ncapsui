@@ -24,6 +24,15 @@ DaoBase.prototype.countByQuery = function (query, callback) {
     });
 };
 
+DaoBase.prototype.findOne = function (query, callback) {
+    this.model.findOne(query, function (error, model) {
+        if (error) {
+            return callback(error, null);
+        }
+        return callback(null, model);
+    })
+}
+
 DaoBase.prototype.getByQuery = function (query, fileds, opt, callback) {
     this.model.find(query, fileds, opt, function (error, model) {
         if (error) return callback(error, null);
@@ -31,7 +40,6 @@ DaoBase.prototype.getByQuery = function (query, fileds, opt, callback) {
         return callback(null, model);
     });
 };
-
 
 DaoBase.prototype.getAll = function (callback) {
     this.model.find({}, function (error, model) {
