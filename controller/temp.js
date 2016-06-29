@@ -58,3 +58,12 @@ function saveWhenNotExist(model, callback) {
     });
 }
 
+
+exports.loadUserTemp = function (req, res, next) {
+    var token = req.query.access_token;
+    UtModel.find({'access_token': token}, function (err, docs) {
+        if (err)console.info(err);
+        console.info(docs);
+        res.send({'temps': docs});
+    });
+}

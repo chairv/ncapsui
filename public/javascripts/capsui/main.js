@@ -1,7 +1,7 @@
 /**
  * Created by tancw on 2016/6/27.
  */
-var app = angular.module('app', ["ui.router"]);
+var app = angular.module('app', ["ui.router", "ngCookies"]);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/temps");
@@ -14,6 +14,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         templateUrl: "html/detail.html",
         controller: 'TempDetailController'
     });
+});
+
+app.service('$base', function () {
+    return this;
 });
 
 app.filter('formatJson', function () {
@@ -41,20 +45,34 @@ app.controller('TempListController', function ($scope, $http) {
     });
 });
 
-app.controller('layoutController', function () {
+app.controller('layoutController', function ($scope, $http, $cookies,$state) {
+    $scope.access_token = $cookies.get('access_token');
+    $scope.temps;
 
+    if ($scope.access_token) {
+        $http.get('loadUserTemp?access_token=' + $scope.access_token).success(function (data) {
+            $scope.temps = data.temps;
+        });
+    }
+
+    $scope.loadTemp = function () {
+        $scope.loadResult = '';
+        $http.get('loadTemp?access_token=' + $scope.access_token).success(function (response) {
+            if (response.data.errcode) {
+                $scope.loadResult = response.data;
+            } else {
+                $scope.temps = response.data.template_list;
+                $cookies.put("access_token", $scope.access_token);
+            }
+        });
+    }
+
+    $state.go('temps');
 });
 
 app.controller('TempDetailController', function ($scope, $http, $stateParams) {
     $http.get('getTemp?id=' + $stateParams.id).success(function (response) {
         $scope.temp = response;
     });
-
-    $scope.access_token = '';
-    $scope.loadTemp = function () {
-        $http.get('loadTemp?access_token=' + $scope.access_token + '&tempId=' + $scope.temp._id).success(function (response) {
-             console.info(response);
-        });
-    }
 });
 
