@@ -28,9 +28,8 @@ exports.loadTemp = function (req, res, next) {
     var token = req.query.access_token;
     var url = 'https://api.weixin.qq.com/cgi-bin/template/get_all_private_template?access_token=' + token;
     utils.httpsget(url, function (data) {
-        console.info(data);
         var temps = data.template_list;
-        if (temps != null) {
+        if (temps) {
             temps.forEach(function (doc) {
                 var tmepModel = new TempModel(doc);
                 saveWhenNotExist(tmepModel, function (temp) {
@@ -38,13 +37,13 @@ exports.loadTemp = function (req, res, next) {
                     doc.tempId = temp.id;
                     var utemp = new UtModel(doc);
                     utemp.save(function (err) {
-                        console.info(err);
+                        // console.info(err);
                     });
                 });
             });
         }
+        return res.send({'data': data});
     });
-    return res.send({'success': true});
 }
 
 function saveWhenNotExist(model, callback) {
