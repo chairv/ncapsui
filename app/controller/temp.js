@@ -61,7 +61,6 @@ exports.loadUserTemp = function (req, res, next) {
     var token = req.query.access_token;
     models.UTemp.find({'access_token': token}, function (err, docs) {
         if (err)console.info(err);
-        console.info(docs);
         res.send({'temps': docs});
     });
 }

@@ -13,6 +13,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/detail/:id",
         templateUrl: "html/detail.html",
         controller: 'TempDetailController'
+    }).state('login',{
+        url:'',
+        templateUrl: "html/login.html",
+        controller:'LoginController'
+    }).state('register',{
+        url:'',
+        templateUrl: "html/register.html",
+        controller:'loginRegisterController'
     });
 });
 
