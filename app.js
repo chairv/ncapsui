@@ -7,10 +7,11 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/cpasui');
 var app = express();
 
-// view engine setup
+// view engine setup http://www.jdon.com/idea/nodejs/web-app-with-angularjs-and-rest-api-with-node.html
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('.html',ejs.__express);
