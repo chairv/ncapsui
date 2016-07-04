@@ -1,0 +1,40 @@
+<div class="row">
+        <div class="panel panel-default bk-bg-white">
+            <div class="panel-heading bk-bg-white">
+                <h6><i class="fa fa-indent red"></i>激活用户</h6>
+                <div class="panel-actions">
+                    <!--<a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>-->
+                    <!--<a href="#" class="btn-close"><i class="fa fa-times"></i></a>-->
+                </div>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="doActive()">
+                    <div class="form-group">
+                        <label for="openid">测试微信号</label>
+                        <input type="text" id="openid" name="openid" class="form-control" placeholder="测试微信号" ng-model="active.openid">
+                        <span class="help-block">例如: o3dQD1MaR9knhspsG3XiCfAFAH-2(在微信测试页面扫描测试号二维码即得)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="access_token">access_token</label>
+                        <input type="text" id="access_token" name="access_token" class="form-control" placeholder="access_token" ng-model="active.access_token">
+                        <span class="help-block">通过appID与appsecret获得(https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET)</span>
+                    </div>
+
+                    <div class="row bk-margin-top-20 bk-margin-bottom-10">
+                        <div class="col-sm-8">
+                            <div class="checkbox-custom checkbox-default" style="color: red">
+                                {{errmsg}}
+                                <!--<input id="AgreeTerms" name="agreeterms" type="checkbox"/>-->
+                                <!--<label for="AgreeTerms">I agree with <a href="#">terms of use</a></label>-->
+                            </div>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <button type="submit" class="btn btn-primary hidden-xs">激活</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg visible-xs bk-margin-top-20">激活</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

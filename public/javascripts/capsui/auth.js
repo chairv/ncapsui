@@ -24,7 +24,7 @@ app.factory('AuthService', function ($http, Session) {
 
     authService.login = function (credentials) {
         return $http
-            .post('/login.do', credentials)
+            .post('/login', credentials)
             .then(function (res) {
                 Session.create(res.data.id, res.data.user.id,
                     res.data.user.role);
@@ -67,23 +67,25 @@ app.service('Session', function () {
     return this;
 })
 
-app.controller("layoutController", function ($scope, USER_ROLES, AUTH_EVENTS, AuthService) {
-    $scope.currentUser = null;
+app.controller("layoutController", function ($scope, USER_ROLES, $cookies,AUTH_EVENTS, AuthService) {
+    $scope.currentUser = $cookies.get('SESSION_USER');
     $scope.userRoles = USER_ROLES;
     $scope.isAuthorized = AuthService.isAuthorized;
     $scope.setCurrentUser = function (user) {
         $scope.currentUser = user;
+        $cookies.put('SESSION_USER',user);
     };
 
-    $scope.logoutCurrnetuser = function () {
+    $scope.logoutCurrnetUser = function () {
         $scope.currentUser = null;
+        $cookies.remove('SESSION_USER');
     }
 })
 
 
 app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, AuthService, $state) {
     $scope.credentials = {
-        username: '',
+        email: '',
         password: ''
     };
     $scope.login = function () {
@@ -99,7 +101,7 @@ app.controller('LoginController', function ($scope, $rootScope, AUTH_EVENTS, Aut
     $scope.logout = function () {
         AuthService.logout(function () {
             $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
-            $scope.logoutCurrnetuser();
+            $scope.logoutCurrnetUser();
         });
     }
 });

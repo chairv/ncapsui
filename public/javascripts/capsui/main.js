@@ -13,14 +13,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         url: "/detail/:id",
         templateUrl: "html/detail.html",
         controller: 'TempDetailController'
-    }).state('login',{
-        url:'',
+    }).state('login', {
+        url: '',
         templateUrl: "html/login.html",
-        controller:'LoginController'
-    }).state('register',{
-        url:'',
+        controller: 'LoginController'
+    }).state('register', {
+        url: '',
         templateUrl: "html/register.html",
-        controller:'loginRegisterController'
+        controller: 'loginRegisterController'
+    }).state('active', {
+        url: '/active/:id',
+        templateUrl: 'html/active.html',
+        controller: 'activeController'
     });
 });
 
@@ -33,6 +37,7 @@ app.filter('formatJson', function () {
         return JsonUti.convertToString(x);
     }
 });
+
 
 app.filter('orderByTemp', function () {
     return function (x) {
@@ -53,7 +58,7 @@ app.controller('TempListController', function ($scope, $http) {
     });
 });
 
-app.controller('layoutController', function ($scope, $http, $cookies,$state) {
+app.controller('layoutController', function ($scope, $http, $cookies, $state) {
     $scope.access_token = $cookies.get('access_token');
     $scope.temps;
 
@@ -84,3 +89,30 @@ app.controller('TempDetailController', function ($scope, $http, $stateParams) {
     });
 });
 
+
+app.controller('loginRegisterController', function ($scope, $http, $state) {
+    $scope.register = function (vo) {
+        $http.post('register', vo).success(function (response) {
+            if (response.success) {
+                $state.go('active', {'id': response.user._id});
+            } else {
+                $scope.errmsg = response.msg;
+            }
+        });
+    }
+});
+
+
+app.controller('activeController', function ($scope, $http, $stateParams) {
+    $scope.active = {
+        userid: $stateParams.id,
+        openid: '',
+        access_token: ''
+    }
+
+    $scope.doActive = function () {
+        $http.post('active',$scope.active).success(function (response) {
+            
+        });
+    }
+});

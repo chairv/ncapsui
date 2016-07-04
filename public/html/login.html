@@ -12,9 +12,9 @@
                         <form class="form-horizontal login"  ng-submit="login()">
                             <div class="bk-padding-left-20 bk-padding-right-20">
                                 <div class="form-group">
-                                    <label>Username</label>
+                                    <label>邮箱</label>
                                     <div class="input-group input-group-icon">
-                                        <input type="text" class="form-control bk-radius" id="username" placeholder="Username or E-mail" ng-model="credentials.username"/>
+                                        <input type="email" class="form-control bk-radius" id="email" placeholder="E-mail" ng-model="credentials.email"/>
 													<span class="input-group-addon">
 														<span class="icon">
 															<i class="fa fa-user"></i>
@@ -23,7 +23,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Username</label>
+                                    <label>密码</label>
                                     <div class="input-group input-group-icon">
                                         <input type="password" class="form-control bk-radius" id="password" placeholder="Password" ng-model="credentials.password"/>
 													<span class="input-group-addon">

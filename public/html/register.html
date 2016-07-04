@@ -9,33 +9,30 @@
                             <img src="assets/img/logo.png" class="img-responsive" alt="" />
                             <h4>New Account</h4>
                         </div>
-                        <form class="form-horizontal register" action="index.html" method="post">
+                        <form class="form-horizontal register" ng-submit="register(vo)">
                             <div class="bk-padding-left-20 bk-padding-right-20">
                                 <div class="form-group">
-                                    <label>Name</label>
-                                    <input name="name" type="text" class="form-control" placeholder="Full Name" id="fullname"/>
-                                </div>
-                                <div class="form-group">
-                                    <label>E-mail Address</label>
-                                    <input name="email" type="email" class="form-control" placeholder="Email Address" id="username"/>
+                                    <label>邮箱地址</label>
+                                    <input name="email" type="email" class="form-control" placeholder="邮件" ng-model="vo.email"/>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-sm-6">
-                                            <label>Password</label>
-                                            <input name="pwd" type="password" class="form-control bk-margin-bottom-10" placeholder="Password" id="password"/>
+                                            <label>密码</label>
+                                            <input name="pwd" type="password" class="form-control bk-margin-bottom-10" placeholder="密码" id="password" ng-model="vo.password"/>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label>Password Confirmation</label>
-                                            <input name="pwdConfirm" type="password" class="form-control bk-margin-bottom-10" placeholder="Password Confirm" id="passwordConfirm"/>
+                                            <label>密码确认</label>
+                                            <input name="pwdConfirm" type="password" class="form-control bk-margin-bottom-10" placeholder="确认密码" id="passwordConfirm"/>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row bk-margin-top-20 bk-margin-bottom-10">
                                     <div class="col-sm-8">
-                                        <div class="checkbox-custom checkbox-default">
-                                            <input id="AgreeTerms" name="agreeterms" type="checkbox"/>
-                                            <label for="AgreeTerms">I agree with <a href="#">terms of use</a></label>
+                                        <div class="checkbox-custom checkbox-default" style="color: red">
+                                            {{errmsg}}
+                                            <!--<input id="AgreeTerms" name="agreeterms" type="checkbox"/>-->
+                                            <!--<label for="AgreeTerms">I agree with <a href="#">terms of use</a></label>-->
                                         </div>
                                     </div>
                                     <div class="col-sm-4 text-right">
@@ -47,10 +44,10 @@
                                     <span>or use your another account</span>
                                 </div>
                                 <div class="text-center bk-margin-top-10 bk-margin-bottom-30">
-                                    <a class="btn btn-facebook bk-margin-bottom-15 bk-margin-5">Connect with <i class="fa fa-facebook"></i></a>
-                                    <a class="btn btn-twitter bk-margin-bottom-15 bk-margin-5">Connect with <i class="fa fa-twitter"></i></a>
+                                    <!--<a class="btn btn-facebook bk-margin-bottom-15 bk-margin-5">Connect with <i class="fa fa-facebook"></i></a>-->
+                                    <!--<a class="btn btn-twitter bk-margin-bottom-15 bk-margin-5">Connect with <i class="fa fa-twitter"></i></a>-->
                                 </div>
-                                <p class="text-center">Already have an account? <a href="page-login.html">Log In!</a>
+                                <p class="text-center">Already have an account? <a ui-sref="login">Log In!</a>
                             </div>
                         </form>
                     </div>

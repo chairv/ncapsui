@@ -11,5 +11,7 @@ router.get('/templist', temp.list);
 router.get('/getTemp', temp.getById);
 router.get('/loadTemp', temp.loadTemp);
 router.get('/loadUserTemp', temp.loadUserTemp);
-router.post('/login.do', user.login);
+router.post('/login', user.login);
+router.post('/register', user.register);
+router.post('/active', user.active);
 module.exports = router;
