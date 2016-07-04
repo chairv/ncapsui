@@ -2,7 +2,7 @@
  * Created by qiao on 2016/6/26.
  */
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/capsui');
+mongoose.connect('mongodb://120.24.94.225:27017/capsui');
 var db = mongoose.connection;
 
 db.on('error',console.error.bind(console,'connection error: '));
