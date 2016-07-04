@@ -32,6 +32,10 @@ app.service('$base', function () {
     return this;
 });
 
+app.service('$httplocal',function ($http) {
+    
+});
+
 app.filter('formatJson', function () {
     return function (x) {
         return JsonUti.convertToString(x);
@@ -112,7 +116,7 @@ app.controller('activeController', function ($scope, $http, $stateParams) {
 
     $scope.doActive = function () {
         $http.post('active',$scope.active).success(function (response) {
-            
+            console.info(response);
         });
     }
 });

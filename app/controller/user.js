@@ -2,6 +2,7 @@
  * Created by tancw on 2016/7/1.
  */
 var User = require('../models').User;
+var http = require('http');
 
 exports.login = function (req, res) {
     console.info();
@@ -33,5 +34,7 @@ exports.register = function (req, res, next) {
 }
 
 exports.active = function (req,res,next) {
-
+    var getWxUserUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN';
+    console.info(req.body);
+    res.send({success:true});
 }
